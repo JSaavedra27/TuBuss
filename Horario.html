@@ -859,42 +859,5 @@
         });
     </script>
 
-    <script>
-        // Actualiza el reloj
-        function updateClock() {
-            const options = {
-                timeZone: 'America/Managua',
-                hour12: true,
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            };
-            const now = new Date().toLocaleTimeString('en-US', options);
-            document.getElementById('clock').textContent = now;
-        }
-        setInterval(updateClock, 1000);
-        updateClock();
-
-        // Encuentra la hora más cercana y redirige al div correspondiente
-        document.getElementById('find-nearest').addEventListener('click', () => {
-            const now = new Date();
-            const hours = [
-                { id: '08:00', time: new Date().setHours(8, 0, 0, 0) },
-                { id: '12:00', time: new Date().setHours(12, 0, 0, 0) },
-                { id: '18:00', time: new Date().setHours(18, 0, 0, 0) },
-            ];
-
-            // Encuentra la hora más cercana
-            const closest = hours.reduce((prev, curr) => 
-                Math.abs(curr.time - now) < Math.abs(prev.time - now) ? curr : prev
-            );
-
-            // Redirige al div correspondiente
-            const section = document.getElementById(closest.id);
-            section.scrollIntoView({ behavior: 'smooth' });
-        });
-    </script>
-
-
 </body>
 </html>
